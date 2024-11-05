@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css?family=Material+Symbols+Outlined');
+@import 'primeicons/primeicons.css';
+@layer tailwind-base, primevue, tailwind-utilities;
+
+@layer tailwind-base {
+  @tailwind base;
+}
+
+@layer tailwind-utilities {
+  @tailwind components;
+  @tailwind utilities;
+}
+
+.p-button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+
+.p-datatable .p-datatable-thead>tr>th {
+  background-color: white;
+  border-bottom: 2px solid var(--surface-300);
+}
+
+.p-datatable .p-datatable-header {
+  background-color: white;
+  border: none;
+  border-radius: 10px 10px 0 0;
+}
+
+.p-datatable .p-datatable-thead>tr>th:first-child {
+  border-top-left-radius: 10px;
+}
+
+.p-datatable .p-datatable-thead>tr>th:last-child {
+  border-top-right-radius: 10px;
+}
+
+.p-datatable .p-datatable-thead>tr>th {
+  border-top: none;
+}
+
+.p-datatable .p-datatable-footer {
+  background-color: white;
+  border: none;
+  border-radius: 0 0 10px 10px;
+}
+
+.p-overlaypanel .p-overlaypanel-content {
+  padding: .5rem !important;
+}
+
+
+@media (min-width: 1024px) {
+  ::-webkit-scrollbar {
+    width: 5px !important;
+    height: 5px !important;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #4b5563;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #4b5563;
+  }
+
+  ::-webkit-scrollbar-thumb:active {
+    background-color: #4b5563;
+  }
+
+  ::-webkit-scrollbar-button {
+    display: none;
+  }
+
+  ::-webkit-scrollbar-corner {
+    display: none;
+  }
+
+  ::-webkit-scrollbar-track-piece:start {
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-track-piece:end {
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb:window-inactive {
+    background-color: #4b5563;
+  }
+
+  ::-webkit-scrollbar-thumb:horizontal {
+    background-color: #4b5563;
+  }
+
+  ::-webkit-scrollbar-thumb:vertical {
+    background-color: #4b5563;
+  }
+
+  ::-webkit-scrollbar-thumb:horizontal:hover {
+    background-color: #4b5563;
+  }
+
+  ::-webkit-scrollbar-thumb:vertical:hover {
+    background-color: #4b5563;
+  }
+
+  ::-webkit-scrollbar-thumb:horizontal:active {
+    background-color: #4b5563;
+  }
+
+  ::-webkit-scrollbar-thumb:vertical:active {
+    background-color: #4b5563;
+  }
+
+  ::-webkit-scrollbar-thumb:horizontal:window-inactive {
+    background-color: #4b5563;
+  }
+
+  ::-webkit-scrollbar-thumb:vertical:window-inactive {
+    background-color: #4b5563;
+  }
+
+  ::-webkit-scrollbar-button:horizontal:decrement {
+    display: none;
+  }
+
+  ::-webkit-scrollbar-button:horizontal:increment {
+    display: none;
+  }
+
+  ::-webkit-scrollbar-button:vertical:decrement {
+    display: none;
+  }
+}
+
+
+:root {
+  --primary-50: 236 253 245;
+  --primary-100: 209 250 229;
+  --primary-200: 167 243 208;
+  --primary-300: 110 231 183;
+  --primary-400: 52 211 153;
+  --primary-500: 16 185 129;
+  --primary-600: 5 150 105;
+  --primary-700: 4 120 87;
+  --primary-800: 6 95 70;
+  --primary-900: 4 78 56;
+  --primary-950: 2 44 34;
+  --surface-0: 255 255 255;
+  --surface-50: 248 250 252;
+  --surface-100: 241 245 249;
+  --surface-200: 226 232 240;
+  --surface-300: 203 213 225;
+  --surface-400: 148 163 184;
+  --surface-500: 100 116 139;
+  --surface-600: 71 85 105;
+  --surface-700: 45 55 72;
+  --surface-800: 30 41 59;
+  --surface-900: 15 23 42;
+  --surface-950: 3 6 23;
+}
