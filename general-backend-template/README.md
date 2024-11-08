@@ -5,18 +5,12 @@ Como primer paso se debe realizar la copia del archivo **".env.example"** a **".
 ````
 cp .env.example .env;
 ````
-Luego, deben configurarse las siguientes variables de entorno:
 
-APP_KEY_ENCRYPTION: Debe ser un string aleatorio de 16 caracteres alfanuméricos.
-APP_IV_ENCRYPTION: Debe ser un string aleatorio de 16 caracteres alfanuméricos.
-Asegúrate de que estas variables estén correctamente configuradas en el archivo .env para asegurar el cifrado adecuado en la aplicación.
-
-Ademas se ha establecido un comando para el inicio del proyecto, teniendo en cuenta que se haya realizado el paso anterior, éste permite generar las claves de la aplicación, generar las migraciones, seeders y jwt key.
-
-Este comando solo se debe ejecutar la primera vez que se instale la aplicación.
+Ejecutar el siguiente comando para realizar todas las instalaciones y configuraciones del proyecto
 ````
 composer init-project;
 ````
+⚠️ Este comando solo se debe ejecutar la primera vez que se instale la aplicación.
 ## Convenciones de la plantilla
 1. Las tablas de base de datos usan **snake_case** para sus nombres y deben ser creadas basadas en un módulo, es decir [Nombre modulo]_[Nombre de la tabla], *por ejemplo "proyecto_configuraciones", "proyecto_participantes"*.
    
@@ -41,6 +35,12 @@ php artisan make:controller UserController
 
 # Ver toda la información de un modelo
 php artisan model:show User
+
+# Limpiar la base de datos
+php artisan db:wipe
+
+# Generar migraciones y seeders
+php artisan migrate --seed
 ````
 
 ## Documentación con Swagger
