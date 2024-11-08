@@ -28,7 +28,7 @@ onMounted(() => {
     class="fixed top-0 left-0 z-40 sm:w-64 w-screen h-full bg-primary-tag overflow-y-auto"
   >
     <div
-      class="h-full px-3 py-4 overflow-y-auto bg-primary md:rounded-r-xl text-white"
+      class="h-full px-3 py-4 overflow-y-auto bg-primary text-white"
     >
       <div class="px-2 py-1 sm:hidden">
         <button
@@ -46,7 +46,7 @@ onMounted(() => {
           class="mx-auto"
         />
       </div>
-      <ul class="space-y-2 font-medium">
+      <ul class="space-y-2 font-normal">
         <li v-for="item in options_menu" :key="item.id">
           <router-link
             v-if=" (!item?.children || item?.children?.length === 0) && item.meta.show "
@@ -60,7 +60,7 @@ onMounted(() => {
             <button
               @click="item.mostrar =! item.mostrar"
               type="button"
-              class="flex items-center w-full p-2 text-base transition duration-75 rounded-lg group hover:bg-info-500 dark:text-white dark:hover:bg-gray-700"
+              class="flex items-center w-full p-2 transition duration-75 rounded-lg group hover:bg-info-500 dark:text-white dark:hover:bg-gray-700"
             >
               <span class="material-symbols-outlined">{{ item?.meta?.icon }}</span>
               <span class="flex-1 ml-3 text-left whitespace-nowrap">{{
@@ -91,7 +91,9 @@ onMounted(() => {
         <Button
           label="Cerrar sesión"
           icon="pi pi-power-off"
-          class="btn btn--primary mt-4 absolute bottom-4 w-10/12 place-self-center"
+          class="mt-4 absolute bottom-4 w-10/12 place-self-center"
+          text
+          severity="danger"
           @click="useAuth.logout()"
         />
       </div>
