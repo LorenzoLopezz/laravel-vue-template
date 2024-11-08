@@ -34,7 +34,7 @@ class AuthUsuarioController extends Controller
         'auth_usuario.*',
         DB::raw("concat_ws(' ', primer_nombre, segundo_nombre, primer_apellido, segundo_apellido) as nombre_completo")
       )
-        ->with(['permisos', 'perfiles', 'institucionArea']);
+        ->with(['permisos', 'perfiles']);
 
       if ($search !== null) {
         $usuarios->whereRaw("LOWER(concat_ws(' ', primer_nombre, segundo_nombre, primer_apellido, segundo_apellido)) LIKE ?", ["%" . strtolower($search) . "%"]);
@@ -42,7 +42,7 @@ class AuthUsuarioController extends Controller
 
       $usuarios = $usuarios->paginate($perPage, ['*'], 'page', $page);
     } else {
-      $usuarios = AuthUsuario::with(['permisos', 'perfiles', 'institucionArea'])->get();
+      $usuarios = AuthUsuario::with(['permisos', 'perfiles'])->get();
     }
 
     $data = $usuarios->map(function ($item) {
@@ -68,7 +68,6 @@ class AuthUsuarioController extends Controller
         'creado_por_email' => $creadoPor["email"] ?? '',
         'estado_nombre'    => $estado["nombre"],
         'perfiles'         => $perfiles,
-        'institucion_area' => $item->institucionArea,
         'nombre'           => $item->nombre_completo,
       ];
     });
@@ -95,7 +94,6 @@ class AuthUsuarioController extends Controller
         'primer_apellido',
         'segundo_apellido',
         'fecha_nacimiento',
-        'id_institucion_area',
         'perfiles'
       ]);
 
@@ -103,7 +101,6 @@ class AuthUsuarioController extends Controller
         'email'              => 'required|email|unique:auth_usuario',
         'primer_nombre'      => 'required|string',
         'primer_apellido'    => 'required|string',
-        'id_institucion_area' => 'required|integer',
         'perfiles'           => 'required|array',
         'fecha_nacimiento'   => 'nullable|date|date_format:Y-m-d',
       ], [
@@ -112,8 +109,6 @@ class AuthUsuarioController extends Controller
         'email.unique'                 => 'Este correo ya está registrado.',
         'primer_nombre.required'       => 'El primer nombre es obligatorio.',
         'primer_apellido.required'     => 'El primer apellido es obligatorio.',
-        'id_institucion_area.required' => 'El ID de área es obligatoria.',
-        'id_institucion_area.integer'  => 'El ID de área debe ser un número entero.',
         'perfiles.required'            => 'Debe asignar al menos un perfil.',
         'perfiles.array'               => 'El formato de perfiles no es válido.',
         'fecha_nacimiento.date'        => 'La fecha de nacimiento debe ser una fecha válida.',
@@ -144,7 +139,6 @@ class AuthUsuarioController extends Controller
         'primer_apellido'    => $data['primer_apellido'],
         'segundo_apellido'   => $data['segundo_apellido'] ?? null,
         'fecha_nacimiento'   => $data['fecha_nacimiento'] ?? null,
-        'id_institucion_area' => $data['id_institucion_area'],
         'remember_token'     => $token,
         'creado_por'         => auth()->user()->id,
       ]);
@@ -203,7 +197,6 @@ class AuthUsuarioController extends Controller
     $validator = Validator::make(request()->all(), [
       'primer_nombre'      => 'required|string',
       'primer_apellido'    => 'required|string',
-      'id_institucion_area' => 'required|integer',
       'perfiles'           => 'required|array',
       'fecha_nacimiento'   => 'nullable|date|date_format:Y-m-d',
     ]);
@@ -222,7 +215,6 @@ class AuthUsuarioController extends Controller
       $usuario->primer_apellido = request()->get('primer_apellido') ?? null;
       $usuario->segundo_apellido = request()->get('segundo_apellido') ?? null;
       $usuario->fecha_nacimiento = request()->get('fecha_nacimiento') ?? null;
-      $usuario->id_institucion_area = request()->get('id_institucion_area') ?? null;
       $usuario->save();
 
       $perfiles = array_map(function ($item) use ($usuario) {
@@ -279,9 +271,7 @@ class AuthUsuarioController extends Controller
     }
 
     $usuario = AuthUsuario::with(['permisos', 'perfiles'])
-      ->leftJoin('institucion_area as ia', 'ia.id', '=', 'auth_usuario.id_institucion_area')
-      ->leftJoin('institucion_establecimiento as ie', 'ie.id', '=', 'ia.id_establecimiento')
-      ->addSelect('auth_usuario.*', 'ia.id as id_institucion_area', 'ie.id as id_institucion_establecimiento', 'ie.id_institucion')
+      ->addSelect('auth_usuario.*')
       ->where('auth_usuario.id', $id)
       ->first();
 
