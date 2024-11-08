@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Material+Symbols+Outlined');
 @import 'primeicons/primeicons.css';
+@import 'button.css';
 @layer tailwind-base, primevue, tailwind-utilities;
 
 @layer tailwind-base {
@@ -140,6 +141,10 @@
   }
 }
 
+.p-password {
+  display: flex;
+  flex-direction: column;
+}
 
 :root {
   --primary-50: 236 253 245;

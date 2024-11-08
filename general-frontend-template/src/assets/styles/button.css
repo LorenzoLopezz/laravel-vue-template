@@ -1,0 +1,16 @@
+.p-button.p-button-success {
+  background-color: var(--primary-500);
+  border-color: var(--primary-500);
+  color: white;
+}
+
+.p-button.p-button-success.p-button-text {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--primary-500);
+}
+
+.p-button.p-button-success.p-button-text:hover {
+  background-color: var(--primary-100);
+  color: var(--primary-500);
+}
