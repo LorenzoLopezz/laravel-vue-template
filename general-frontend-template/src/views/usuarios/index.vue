@@ -1,13 +1,13 @@
 <template>
   <Toast />
-  <div class="w-full h-screen bg-[#ebf3ff] p-8 space-y-6">
+  <div class="w-full h-screen bg-background p-8 space-y-6">
     <div class="space-y-5 md:space-y-0 md:flex md:justify-between">
-      <h1 class="title-4xl">Usuarios</h1>
+      <h1 class="text-4xl">Usuarios</h1>
       <div class="flex justify-end">
         <Button
           icon="pi pi-plus-circle"
           label="Nuevo usuario"
-          class="btn btn--primary"
+          class="btn--primary px-8 bg-primary border-0 rounded-lg hover:bg-primary shadow-none"
           @click="dialogForm = true"
         />
       </div>
@@ -29,9 +29,6 @@
           totalRegistros
         }"
       >
-        <template #institucion_area="{ item }">
-          {{ item.institucion_area?.nombre }}
-        </template>
         <template #perfiles="{ item }">
           {{ joinPerfiles(item?.perfiles) }}
         </template>
@@ -173,7 +170,6 @@ const totalRegistros = ref(0)
 const encabezados = ref([
   {name: 'Nombre', value: 'nombre' },
   {name: 'Correo', value: 'email' },
-  {name: 'Área', value: 'institucion_area'},
   {name: 'Perfiles', value: 'perfiles', classCol: 'max-w-[400px]'},
   {name: 'Fecha de creación', value: 'created_at',},
   {name: 'Verificación', value: 'verificado'},

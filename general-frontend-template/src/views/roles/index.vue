@@ -2,7 +2,7 @@
   <div class="w-full flex-1 flex justify-center items-center">
     <div class="w-full min-h-screen flex-1 flex justify-start items-start flex-col bg-background">
       <div class="w-full flex flex-col sm:flex-row sm:justify-between sm:items-center text-left px-8 py-8">
-        <p class="text-3xl font-bold text-primary mb-4 sm:mb-0">Roles</p>
+        <h1 class="text-4xl">Roles</h1>
         <Button
           aria-label="Nuevo rol"
           icon="pi pi-plus-circle"

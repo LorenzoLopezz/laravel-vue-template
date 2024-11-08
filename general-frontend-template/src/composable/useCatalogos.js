@@ -17,5 +17,7 @@ export const useCatalogos = () => {
   return {
     obtenerPerfiles,
     obtenerModulos,
+    listaPerfiles,
+    listaModulos,
   }
 }

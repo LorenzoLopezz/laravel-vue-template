@@ -1,57 +1,44 @@
 <template>
-  <div class="w-full h-screen bg-primary flex justify-center items-center flex-col">
+  <div class="h-[105vh] bg-primary">
     <Toast />
+    <div class="flex flex-row flex-wrap lg:flex-nowrap justify-center items-center h-screen"
+      style="position: relative; z-index: 2;">
 
-    <div class="w-full max-w-[400px] h-auto p-10 bg-white border border-gray-200 rounded-2xl flex flex-col">
-      <div class="flex justify-center items-center mb-5">
-        <div class="text-text-primary text-xl font-medium">Iniciar sesión</div>
+      <div class="w-full lg:w-2/5 xl:w-1/3">
+        <Card>
+          <template #content>
+            <div class="flex flex-col gap-2 mb-4">
+              <InputText name="username" type="text" placeholder="Usuario *" v-model="state.username" :class="{
+                'input-form-error': !isValidUsername && showErrorUsername,
+                'text-primary': isValidUsername || !showErrorUsername,
+              }" @blur="validateUsername()" variant="filled" />
+              <small v-if="isValidUsername == false && showErrorUsername == true" class="text-danger">
+                {{ errorUsername }}
+              </small>
+            </div>
+
+            <div class="flex flex-col gap-2 mb-4">
+              <Password v-model="state.password" placeholder="Contraseña *" @blur="validatePassword()" :feedback="false"
+                toggleMask variant="filled" />
+              <small v-if="isValidPassword == false && showErrorPassword == true" class="text-danger block">
+                {{ errorPassword }}
+              </small>
+            </div>
+
+            <Button label="Ingresar" class="w-full mt-8" @click="handleLogin()" severity="success" size="small" />
+          </template>
+        </Card>
       </div>
-
-      <!-- Usuario -->
-      <div class="flex flex-col mb-5">
-        <label for="username" class="font-semibold mb-1"
-          :class="isValidUsername == false && showErrorUsername == true ? 'text-danger' : 'text-text-primary'">Usuario</label>
-        <span class="relative w-full">
-          <InputText placeholder="Ingrese su usuario" v-model="state.username" class="w-full bg-transparent input-form"
-            :class="{
-              'input-form-error': !isValidUsername && showErrorUsername,
-              'text-primary': isValidUsername || !showErrorUsername,
-            }" @blur="validateUsername()" />
-          <small v-if="isValidUsername == false && showErrorUsername == true" class="text-danger">{{ errorUsername
-            }}</small>
-        </span>
-      </div>
-
-      <!-- Contraseña -->
-      <div class="flex flex-col mb-10">
-        <label for="username" class="font-semibold mb-1"
-          :class="isValidPassword == false && showErrorPassword == true ? 'text-danger' : 'text-text-primary'">Contraseña</label>
-        <span class="relative w-full">
-          <i class="absolute top-2/4 -mt-3 right-3 cursor-pointer" @click="visibilityPassword = !visibilityPassword"
-            :class="isValidPassword == false && showErrorPassword == true ? 'text-danger' : 'text-black'">
-            <span class="material-symbols-outlined opacity-50">{{ visibilityPassword ? 'visibility' : 'visibility_off'
-              }}</span>
-          </i>
-          <InputText placeholder="Ingrese su contraseña" :type="visibilityPassword ? 'text' : 'password'"
-            v-model="state.password" class="w-full bg-transparent input-form" :class="{
-              'input-form-error': !isValidPassword && showErrorPassword,
-              'text-primary': isValidPassword || !showErrorPassword,
-            }" @blur="validatePassword()" />
-        </span>
-        <small v-if="isValidPassword == false && showErrorPassword == true" class="text-danger">{{ errorPassword
-          }}</small>
-      </div>
-
-      <Button label="Ingresar" class="btn w-full text-md shadow-none" style="background-color: #000a65; color: white;"
-        @click="handleLogin()" />
     </div>
   </div>
 </template>
 
 <script setup>
 import Button from "primevue/button"
-import InputText from 'primevue/inputtext';
-import Toast from 'primevue/toast';
+import InputText from 'primevue/inputtext'
+import Card from 'primevue/card'
+import Password from 'primevue/password'
+import Toast from 'primevue/toast'
 
 import { ref, computed, reactive } from "vue";
 import { useAuthStore } from "../../store/auth.store"

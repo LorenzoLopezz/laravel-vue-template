@@ -1,8 +1,6 @@
 <template>
-  <div class="w-full flex justify-center items-center">
-    <div class="w-full min-h-screen flex-1 flex justify-start items-start flex-col bg-background">
-      <h1>Hola mundo</h1>
-    </div>
+  <div class="h-screen p-8">
+    <h1 class="block text-center text-xl">Bienvenido a la plantilla frontend</h1>
   </div>
 </template>
 

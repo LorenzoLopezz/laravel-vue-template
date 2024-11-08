@@ -2,7 +2,7 @@
   <div class="w-full flex-1 flex justify-center items-center">
     <div class="w-full min-h-screen flex-1 flex justify-start items-start flex-col bg-background">
       <div class="w-full flex flex-col sm:flex-row sm:justify-between sm:items-center text-left px-8 py-8">
-        <p class="text-3xl font-bold text-primary mb-4 sm:mb-0">Perfiles</p>
+        <h1 class="text-4xl">Perfiles</h1>
         <Button
           aria-label="Nuevo perfil"
           icon="pi pi-plus-circle"
@@ -21,32 +21,6 @@
                     <template #header>
                       <span class="flex align-items-center gap-2 w-full">
                         <span class="font-bold white-space-nowrap">{{ item.nombre }}</span>
-                        <!-- <div class="flex justify-center ml-auto mr-2">
-                          <Button
-                            rounded
-                            text
-                            class="!px-0 aspect-square flex justify-center"
-                            size="small"
-                            aria-haspopup="true"
-                            @click.stop="toggleOverlay(item.id, $event)"
-                          >
-                            <i class="material-icons text-gray-400">more_horiz</i>
-                          </Button>
-                        </div>
-                        <OverlayPanel :ref="el => setOverlayRef(el, item.id)">
-                          <div class="flex-1">
-                            <Button
-                              text
-                              class="w-full space-x-1.5"
-                              size="small"
-                              v-for="(action, index) in listaAcciones" :key="index"
-                              @click="action.accion ? action.accion(item) : null"
-                            >
-                              <i :class="action.classIcon+' material-icons'">{{ action.icon }}</i>
-                              <span class="text-primary">{{ action.label }}</span>
-                            </Button>
-                          </div>
-                        </OverlayPanel> -->
                       </span>
                     </template>
                     <p class="pa-0 ma-0">
@@ -82,13 +56,12 @@
 <script setup>
 import Card from "primevue/card";
 import Button from "primevue/button";
-import OverlayPanel from "primevue/overlaypanel";
 import Accordion from 'primevue/accordion';
 import AccordionTab from 'primevue/accordiontab';
 import ModalPerfil from "@/views/perfiles/components/modals/ModalPerfilComponent.vue";
 import PerfilesDataTable from "@/views/perfiles/components/PerfilesDataTableComponent.vue";
 
-import { ref, computed, reactive, onMounted, watch } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 
 // services
 import perfilesService from "@/services/perfiles.services"
@@ -165,20 +138,6 @@ function showEliminar(item){
 }
 
 const eliminarPerfil = async () => {
-  // try {
-  //   const response = await projectService.borrarProyectoComponentes(componentObj.value.id);
-  //   if(response.status == 201 || response.status == 200){
-  //     successToast('Proyecto', response.data.message)
-  //     limpiarCampos();
-  //     getComponents();
-  //   }else{
-  //     errorToast('Error', response.data.message)
-  //   }
-  // } catch (error) {
-
-  // } finally {
-  //   modalEliminar.value = false
-  // }
   perfilObj.value = {};
   modalEliminar.value = false
 }

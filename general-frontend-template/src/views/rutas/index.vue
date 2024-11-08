@@ -1,12 +1,12 @@
 <template>
-  <div class="w-full h-screen bg-[#ebf3ff] p-8 space-y-6">
+  <div class="w-full h-screen bg-background p-8 space-y-6">
     <div class="space-y-5 md:space-y-0 md:flex md:justify-between">
-      <h1 class="title-4xl">Rutas</h1>
+      <h1 class="text-4xl">Rutas</h1>
       <div class="flex justify-end">
         <Button
           icon="pi pi-plus-circle"
           label="Nueva ruta"
-          class="btn btn--primary"
+          class="btn--primary px-8 bg-primary border-0 rounded-lg hover:bg-primary shadow-none"
           @click="dialogForm = true"
         />
       </div>
