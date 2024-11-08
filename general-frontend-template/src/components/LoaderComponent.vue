@@ -1,7 +1,7 @@
 <template>
   <BlockUI
     v-if="loading"
-    class="fixed content !w-full !h-full flex !z-50 justify-center items-center
+    class="fixed content !w-full !h-full flex !z-[3110010] justify-center items-center
       backdrop-blur-sm bg-gray-900 bg-opacity-30"
   >
     <template #default>
