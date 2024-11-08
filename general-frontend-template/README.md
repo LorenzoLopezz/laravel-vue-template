@@ -7,9 +7,15 @@ Instalar dependencias
 npm install
 ````
 
-Configurar environments
+Generar archivo de variables
 ````
 cp .env.example .env.local
+````
+
+Configurar las variables necesarias
+````
+VITE_VUE_APP_API_URL
+VITE_VUE_APP_SOCKET_URL
 ````
 
 Iniciar servidor
