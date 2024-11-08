@@ -22,6 +22,7 @@ return new class extends Migration
       $table->foreignId('id_estado')->constrained('estado')->defaultValue(1);
       $table->foreignId('creado_por')->nullable()->constrained('auth_usuario');
       $table->timestamp('ultima_sesion')->nullable();
+      $table->string('remember_token', 100)->nullable()->change();
       $table->rememberToken();
       $table->timestamp('created_at')->useCurrent();
       $table->timestamp('updated_at')->nullable();

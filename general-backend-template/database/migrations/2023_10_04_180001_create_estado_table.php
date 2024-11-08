@@ -14,6 +14,7 @@ return new class extends Migration
     Schema::create('estado', function (Blueprint $table) {
       $table->id()->autoIncrement();
       $table->string('nombre');
+      $table->foreignId('id_calificador')->constrained('estado_calificador');
       $table->timestamp('created_at')->useCurrent();
       $table->timestamp('updated_at')->nullable();
       $table->softDeletes();

@@ -22,6 +22,6 @@ class SeguridadModuloSeeder extends Seeder
       ],
     ]);
 
-    DB::statement('ALTER SEQUENCE seguridad_modulo_id_seq RESTART WITH 3');
+    DB::statement('ALTER SEQUENCE seguridad_modulo_id_seq RESTART WITH 2');
   }
 }
